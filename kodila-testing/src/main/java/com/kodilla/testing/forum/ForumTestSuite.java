@@ -16,6 +16,7 @@ class ForumTestSuite {
 
         String expectedResult = "theForumUser";
 
+
         //Then
         Assertions.assertEquals(expectedResult, result);
     }
