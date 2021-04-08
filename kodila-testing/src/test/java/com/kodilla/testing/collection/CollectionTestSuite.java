@@ -3,7 +3,6 @@ package com.kodilla.testing.collection;
 import org.junit.jupiter.api.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class CollectionTestSuite {
@@ -33,8 +32,6 @@ public class CollectionTestSuite {
         // When
         List<Integer> oddNumbers=oddNumbersExterminator.exterminate(emptyList);
         List<Integer> expectedResult = new ArrayList<>();
-        Collections.sort(oddNumbers);
-        Collections.sort(expectedResult);
         System.out.println("Testing if number list: " +oddNumbers+ " matches numbers: " + expectedResult);
         // Then
         Assertions.assertEquals(expectedResult, oddNumbers);
@@ -44,14 +41,12 @@ public class CollectionTestSuite {
     @Test
     void testOddNumbersExterminatorNormalList() {
         // Given
-        ArrayList<Integer> numberList =new ArrayList<>(Arrays.asList (2,5,14,22,24));
+        ArrayList<Integer> numberList =new ArrayList<>(Arrays.asList (2,6,14,22,24,7));
         OddNumbersExterminator oddNumbersExterminator =new OddNumbersExterminator();
         // When
         List<Integer> oddNumbers=oddNumbersExterminator.exterminate(numberList);
-        List<Integer> expectedResult=Arrays.asList(1,2,3,4,6);
+        List<Integer> expectedResult=Arrays.asList(2,6,14,22,24);
         System.out.println("Testing if number list: " + oddNumbers + " matches numbers: " + expectedResult);
-        Collections.sort(oddNumbers);
-        Collections.sort(expectedResult);
         // Then
         Assertions.assertEquals(expectedResult,oddNumbers);
     }
