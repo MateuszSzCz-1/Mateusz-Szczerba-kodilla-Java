@@ -48,7 +48,7 @@ public class CollectionTestSuite {
         OddNumbersExterminator oddNumbersExterminator =new OddNumbersExterminator();
         // When
         List<Integer> oddNumbers=oddNumbersExterminator.exterminate(numberList);
-        List<Integer> expectedResult=Arrays.asList(6,12,18,24);
+        List<Integer> expectedResult=Arrays.asList(2,4,6,12,21);
         System.out.println("Testing if number list: " + oddNumbers + " matches numbers: " + expectedResult);
         Collections.sort(oddNumbers);
         Collections.sort(expectedResult);
