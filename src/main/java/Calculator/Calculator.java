@@ -10,9 +10,9 @@ public class Calculator {
         int second;
         char znak;
         Scanner wej=new Scanner(System.in);
-        System.out.println("Podaj pierwszą liczbę:");
+        System.out.println(" Podaj pierwszą liczbę:");
         first=wej.nextInt();
-        System.out.println("Podaj drugą liczbę:");
+        System.out.println(" Podaj drugą liczbę:");
         second=wej.nextInt();
 
         System.out.println("Dodawanie dwóch liczb - wciśnij +");
