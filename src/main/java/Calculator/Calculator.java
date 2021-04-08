@@ -16,7 +16,7 @@ public class Calculator {
         second=wej.nextInt();
 
         System.out.println("Dodawanie dwóch liczb - wciśnij +");
-        System.out.println("Odejmowanie dwóch liczb - wciśnij -");
+        System.out.println("Odejmowanie dwóch liczb  - wciśnij -");
 
         znak=wej.next().charAt(0);
         switch(znak)

@@ -44,11 +44,11 @@ public class CollectionTestSuite {
     @Test
     void testOddNumbersExterminatorNormalList() {
         // Given
-        ArrayList<Integer> numberList =new ArrayList<>(Arrays.asList (1,3,5,13,22,24));
+        ArrayList<Integer> numberList =new ArrayList<>(Arrays.asList (2,5,14,22,24));
         OddNumbersExterminator oddNumbersExterminator =new OddNumbersExterminator();
         // When
         List<Integer> oddNumbers=oddNumbersExterminator.exterminate(numberList);
-        List<Integer> expectedResult=Arrays.asList(2,4,6,12,21);
+        List<Integer> expectedResult=Arrays.asList(1,2,3,4,6);
         System.out.println("Testing if number list: " + oddNumbers + " matches numbers: " + expectedResult);
         Collections.sort(oddNumbers);
         Collections.sort(expectedResult);
