@@ -10,6 +10,14 @@ public class ForumUser {                                       // [5]
     private String realName;                                    // [7]
     private List<ForumPost> posts = new ArrayList<>();          // [8]
     private List<ForumComment> comments = new LinkedList<>();   // [9]
+    public int getPostsQuantity() {
+        return posts.size();
+    }
+
+    public void addPost(String author, String postBody) {
+        ForumPost thePost = new ForumPost(postBody, author);
+        posts.add(thePost);
+    }
 
     public ForumUser(String name, String realName) {            // [10]
         //name visible on forum
@@ -63,4 +71,5 @@ public class ForumUser {                                       // [5]
     public String getRealName() {                               // [39]
         return realName;                                         // [40]
     }                                                           // [41]
+
 }
