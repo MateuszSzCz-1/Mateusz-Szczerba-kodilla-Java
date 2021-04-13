@@ -22,12 +22,10 @@ public class WeatherForecastTestSuite {
 
     @Mock
     private Temperatures temperaturesMock;
-
     @BeforeAll
     public static void beforeAll() {
         System.out.println("Executing tests: ");
     }
-
     @BeforeEach
     public void before() {
         testCounter++;
@@ -40,7 +38,6 @@ public class WeatherForecastTestSuite {
         temperaturesMap.put("Gdansk", 26.1);
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
     }
-
     @Test
     void testCalculateForecastWithMock() {
         //Given
@@ -52,7 +49,6 @@ public class WeatherForecastTestSuite {
         //Then
         Assertions.assertEquals(5, quantityOfSensors);
     }
-
     @Test
     void testCalculateAverageTemperature() {
         //Given
@@ -64,7 +60,6 @@ public class WeatherForecastTestSuite {
         //Then
         Assertions.assertEquals(26.0, averageTemperature);
     }
-
     @Test
     void testCalculateMedianValue() {
         //Given
