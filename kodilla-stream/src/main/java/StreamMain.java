@@ -3,6 +3,9 @@ import com.kodilla.stream.beautification.Deco;
 import com.kodilla.stream.beautification.PoemBeautifier;
 import com.kodilla.stream.book.Book;
 import com.kodilla.stream.book.BookDirectory;
+import com.kodilla.stream.forumuser.ForumDirectory;
+import com.kodilla.stream.forumuser.ForumUser;
+import com.kodilla.stream.forumuser.Sex;
 import com.kodilla.stream.iterate.NumbersGenerator;
 import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.person.People;
@@ -39,12 +42,25 @@ public class StreamMain {
 
         //System.out.println("Using Stream to generate even numbers from 1 to 20");
         //NumbersGenerator.generateEven(20);
-        BookDirectory theBookDirectory = new BookDirectory();
-        String theResultStringOfBooks = theBookDirectory.getList().stream()  // [1]
-                .filter(book -> book.getYearOfPublication() > 2005)
-                .map(Book::toString)
-                .collect(Collectors.joining(",\n", "<<", ">>"));                    // [2]
+       // BookDirectory theBookDirectory = new BookDirectory();
+       // String theResultStringOfBooks = theBookDirectory.getList().stream()  // [1]
+         //       .filter(book -> book.getYearOfPublication() > 2005)
+           //     .map(Book::toString)
+             //   .collect(Collectors.joining(",\n", "<<", ">>"));                    // [2]
+        //System.out.println(theResultStringOfBooks);
+        ForumDirectory forum = new ForumDirectory();
 
-        System.out.println(theResultStringOfBooks);
+        System.out.println("Using Stream to generate numbers from 1 to 20");
+        NumbersGenerator.generateEven(20);
+        Map<Integer, ForumUser> resultOfNaturalSelection = forum.getUserList().stream()
+                .filter(user -> user.getSex().equals(Sex.M))
+                .filter(user -> user.getYear() < 2003)
+                .filter(user -> user.getNumberOfPublishedPosts() > 1)
+                .collect(Collectors.toMap(ForumUser::getUniqueID, user -> user));
+
+        System.out.println("Reminded forum users: " + resultOfNaturalSelection.size());
+        resultOfNaturalSelection.entrySet().stream()
+                .map(entry -> "ID #" + entry.getKey() + ": " + entry.getValue())
+                .forEach(System.out::println);
     }
 }
