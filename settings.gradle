@@ -10,4 +10,12 @@ findProject(':kodila-testing:kodilla-good-patterns')?.name = 'kodilla-good-patte
 include 'kodilla-good-patterns'
 include 'kodilla-good-patterns:challenges'
 findProject(':kodilla-good-patterns:challenges')?.name = 'challenges'
+include 'kodilla-spring'
+include 'kodilla-spring-intro'
+include 'ucom.kodilla.spring.introntitled'
+findProject(':ucom.kodilla.spring.introntitled')?.name = 'com.kodilla.spring.intro'
+include 'kodilla.spring.intro'
+include 'kodilla.spring.intro'
+include 'kodilla.spring.forum'
+include 'kodilla-patterns'
 
