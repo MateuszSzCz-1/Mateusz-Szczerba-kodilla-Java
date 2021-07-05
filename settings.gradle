@@ -18,4 +18,5 @@ include 'kodilla.spring.intro'
 include 'kodilla.spring.intro'
 include 'kodilla.spring.forum'
 include 'kodilla-patterns'
+include 'kodilla-jdbc'
 
