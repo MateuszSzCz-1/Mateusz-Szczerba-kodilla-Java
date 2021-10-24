@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NamedQuery(
-        name = "Employee.findUsingLastname",
+        name = "Employee.findEmployeeWithSurname",
         query = "FROM Employee WHERE lastname = :LASTNAME"
+)
+@NamedQuery(
+        name = "Employee.findByPartName",
+        query = "FROM Employee WHERE lastname LIKE CONCAT(\'%\',:LASTNAME, \'%\')"
 )
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
-
     private int id;
     private String firstname;
     private String lastname;
@@ -46,21 +49,7 @@ public class Employee {
         return lastname;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "JOIN_COMPANY_EMPLOYEE",
-            joinColumns = {
-                    @JoinColumn(name = "EMPLOYEE_ID",
-                            referencedColumnName = "EMPLOYEE_ID")},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")
-            }
-    )
-    public List<Company> getCompanies() {
-        return companies;
-    }
-
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
 
@@ -72,7 +61,17 @@ public class Employee {
         this.lastname = lastname;
     }
 
-    public void setCompanies(List<Company> companies) {
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "COMPANY_EMPLOYEE",
+            joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")}
+    )
+    public List<Company> getCompanies() {
+        return companies;
+    }
+
+    private void setCompanies(List<Company> companies) {
         this.companies = companies;
     }
 }
