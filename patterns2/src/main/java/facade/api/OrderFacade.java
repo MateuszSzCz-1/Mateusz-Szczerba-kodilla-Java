@@ -1,25 +1,34 @@
 package facade.api;
 
 
+
 import facade.ShopService;
+import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
 @Service
+@EnableAspectJAutoProxy
 public class OrderFacade {
     public static final Logger LOGGER = LoggerFactory.getLogger(OrderFacade.class);
-    private final ShopService shopService;
+
+    @Autowired
+    private ShopService shopService;
 
     @Autowired
     public OrderFacade(ShopService shopService) {
         this.shopService = shopService;
     }
 
+    @Before("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder()))" +
+            "&& args(orderId) && args(userId)")
     public void processOrder(final OrderDto order, final Long userId) throws OrderProcessingException {
+        LOGGER.info("User with id: " + userId + " requested to process order.");
         boolean wasError = false;
         Long orderId = shopService.openOrder(userId);
         LOGGER.info("Registering new order, ID: " + orderId);
