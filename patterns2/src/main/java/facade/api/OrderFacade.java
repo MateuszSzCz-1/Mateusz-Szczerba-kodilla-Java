@@ -1,7 +1,5 @@
 package facade.api;
 
-
-
 import facade.ShopService;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
@@ -25,7 +23,7 @@ public class OrderFacade {
         this.shopService = shopService;
     }
 
-    @Before("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder()))" +
+    @Before("execution(* facade.api.OrderFacade.processOrder()))" +
             "&& args(orderId) && args(userId)")
     public void processOrder(final OrderDto order, final Long userId) throws OrderProcessingException {
         LOGGER.info("User with id: " + userId + " requested to process order.");
