@@ -20,4 +20,5 @@ include 'kodilla.spring.forum'
 include 'kodilla-patterns'
 include 'kodilla-jdbc'
 include 'patterns2'
+include 'Kodila-testing2'
 
